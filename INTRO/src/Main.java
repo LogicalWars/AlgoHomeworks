@@ -22,10 +22,10 @@ public class Main {
         int right = prices.length - 1;
         while (left < right) {
             int middle = (left + right) / 2;
-            if (prices[middle] == money){
-            // доработать на свежую голову
+            if (prices[middle] <= money && prices[middle+1] > money){
+                return prices.length - (middle+1);
             }
-            if (prices[middle] < money){
+            if (prices[middle] <= money){
                 left = middle+1;
             }
             if (prices[middle] > money){
@@ -33,6 +33,6 @@ public class Main {
             }
 
         }
-        return 0; // иначе не скомпилится, джава сама не знает бинпоиск
+        return 0;
     }
 }
