@@ -13,20 +13,25 @@ public class Main {
 
     public static void compare(int day) {
         System.out.println("=== Day " + day + " ===");
-        int[] startNumbers = { 21, 1, 20, 23 };
+        int[] startNumbers = {21, 1, 20, 23};
         int iterative = chooseHobbyIterative(startNumbers, day);
-        int recursive = chooseHobbyRecursive(startNumbers, day);
+        int recursive = chooseHobbyRecursive(startNumbers, day, new int[day]);
         System.out.println("Iterative = " + iterative + " | Recursive = " + recursive);
         System.out.println();
     }
 
-    public static int chooseHobbyRecursive(int[] startNumbers, int day) {
-        if (day <= 0){
-            return startNumbers[day+(startNumbers.length-1)];
+    public static int chooseHobbyRecursive(int[] startNumbers, int day, int[] memory) {
+        if (day <= 0) {
+            return startNumbers[day + (startNumbers.length - 1)];
         }
-        int prev = chooseHobbyRecursive(startNumbers, day - 1);
-        int prePrePrev = chooseHobbyRecursive(startNumbers, day - 3);
-        return (prev * prePrePrev) % 10 + 1;
+        if (memory[day-1] != 0) {
+            return memory[day-1];
+        }
+        int prev = chooseHobbyRecursive(startNumbers, day - 1, memory);
+        int prePrePrev = chooseHobbyRecursive(startNumbers, day - 3, memory);
+        int result = (prev * prePrePrev) % 10 + 1;
+        memory[day-1] = result;
+        return result;
     }
 
 
