@@ -21,10 +21,17 @@ public class Main {
     }
 
     public static int chooseHobbyRecursive(int[] startNumbers, int day) {
-//        int prev = ??? // предыдущее значение
-//        int prePrePrev = ??? // пре-пре-предыдущее значение
-//        return prev * ...;
-        return 0;
+        if (day == 0) {
+            return startNumbers[3];
+        }
+        day--;
+        int prev = startNumbers[3]; // предыдущее значение
+        int prePrePrev = startNumbers[1]; // пре-пре-предыдущее значение
+        for (int i = 0; i < 3; i++) {
+            startNumbers[i] = startNumbers[i + 1];
+        }
+        startNumbers[3] = (prev * prePrePrev) % 10 + 1;
+        return chooseHobbyRecursive(startNumbers,day);
     }
 
     public static int chooseHobbyIterative(int[] startNumbers, int day) {
