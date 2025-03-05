@@ -21,18 +21,14 @@ public class Main {
     }
 
     public static int chooseHobbyRecursive(int[] startNumbers, int day) {
-        if (day == 0) {
-            return startNumbers[3];
+        if (day <= 0){
+            return startNumbers[day+(startNumbers.length-1)];
         }
-        day--;
-        int prev = startNumbers[3]; // предыдущее значение
-        int prePrePrev = startNumbers[1]; // пре-пре-предыдущее значение
-        for (int i = 0; i < 3; i++) {
-            startNumbers[i] = startNumbers[i + 1];
-        }
-        startNumbers[3] = (prev * prePrePrev) % 10 + 1;
-        return chooseHobbyRecursive(startNumbers,day);
+        int prev = chooseHobbyRecursive(startNumbers, day - 1);
+        int prePrePrev = chooseHobbyRecursive(startNumbers, day - 3);
+        return (prev * prePrePrev) % 10 + 1;
     }
+
 
     public static int chooseHobbyIterative(int[] startNumbers, int day) {
         List<Integer> numbers = new ArrayList<>();
