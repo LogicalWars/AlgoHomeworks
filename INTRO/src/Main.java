@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        int[] prices = { 13, 17, 19, 25, 25, 25, 25, 25, 25, 27, 30 };
+        int[] prices = {13, 17, 19, 25, 25, 25, 25, 25, 25, 27, 30};
 
         System.out.println("Для 31: " + countMore(prices, 31)); // 0
         System.out.println("Для 26: " + countMore(prices, 26)); // 2
@@ -22,16 +22,16 @@ public class Main {
         int right = prices.length - 1;
         while (left < right) {
             int middle = (left + right) / 2;
-            if (prices[middle] <= money && prices[middle+1] > money){
-                return prices.length - (middle+1);
+            if (prices[middle] <= money && prices[middle + 1] > money) {
+                return prices.length - (middle + 1);
             }
-            if (prices[middle] <= money){
-                left = middle+1;
-            }
-            if (prices[middle] > money){
-                right = middle-1;
+            if (prices[middle] <= money) {
+                left = middle + 1;
             }
 
+            if (prices[middle] > money) {
+                right = middle - 1;
+            }
         }
         return 0;
     }

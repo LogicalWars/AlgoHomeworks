@@ -24,13 +24,13 @@ public class Main {
         if (day <= 0) {
             return startNumbers[day + (startNumbers.length - 1)];
         }
-        if (memory[day-1] != 0) {
-            return memory[day-1];
+        if (memory[day - 1] != 0) {
+            return memory[day - 1];
         }
         int prev = chooseHobbyRecursive(startNumbers, day - 1, memory);
         int prePrePrev = chooseHobbyRecursive(startNumbers, day - 3, memory);
         int result = (prev * prePrePrev) % 10 + 1;
-        memory[day-1] = result;
+        memory[day - 1] = result;
         return result;
     }
 
