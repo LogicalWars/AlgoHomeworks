@@ -34,14 +34,8 @@ public class Main {
         int iTeamB = 0;
         int iResult = 0;
 
-        while (iResult < result.length && (iTeamA < teamA.length || iTeamB < teamB.length)) {
-            if (iTeamA == teamA.length) {
-                result[iResult] = teamB[iTeamB];
-                iTeamB++;
-            } else if (iTeamB == teamB.length) {
-                result[iResult] = teamA[iTeamA];
-                iTeamA++;
-            } else if (teamA[iTeamA] >= teamB[iTeamB]) {
+        while (iResult < result.length) {
+            if (iTeamA < teamA.length && (iTeamB >= teamB.length || teamA[iTeamA] >= teamB[iTeamB])) {
                 result[iResult] = teamA[iTeamA];
                 iTeamA++;
             } else {
@@ -51,6 +45,5 @@ public class Main {
             iResult++;
         }
         return result;
-
     }
 }
