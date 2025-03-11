@@ -47,10 +47,18 @@ public class Tree {
         this.right = right;
     }
 
-    /* Раскомментируйте и реализуйте этот метод
     public boolean isNamePyramid() {
-        // ВАШ КОД
-    } */
+        boolean isPyramidLeft = true;
+        boolean isPyramidRight = true;
+
+        if (left != null) {
+            isPyramidLeft = (name.length() <= left.getName().length() && left.isNamePyramid());
+        }
+        if (right != null) {
+            isPyramidRight = (name.length() <= right.getName().length() && right.isNamePyramid());
+        }
+        return isPyramidLeft && isPyramidRight;
+    }
 
     @Override
     public String toString() {

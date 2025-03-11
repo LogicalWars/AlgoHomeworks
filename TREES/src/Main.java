@@ -3,10 +3,6 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        // Заполнение дерева
-        // Названия переменных указывают на место заполняемого узла
-        // например, rl - повернуть на право, затем налево
-        // После заполнения дерево выводится на консоль, можете ориентироваться на него
 
         Tree ll = new Tree("Александа");
         Tree lr = new Tree("Владимир");
@@ -31,19 +27,13 @@ public class Main {
         System.out.println(root.contains("Борис")); // true
         System.out.println(root.contains("Анна")); // false
 
-        /* Ваше задание (нужно раскомментировать)
         System.out.println("Проверка на пирамидальность по длине имени");
 
         System.out.println(root.isNamePyramid()); // true
 
-        // Меняем имя в одном из узлов на Павел
-        // Пирамидальность должна нарушиться
-        // А из-за того что имя на ту же букву,
-        // в данном случае свойства дерева поиска сохрнаяются
         rr.setName("Павел");
         System.out.println(root.isNamePyramid()); // false
 
-        */
     }
 
 }
