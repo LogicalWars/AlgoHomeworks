@@ -32,8 +32,8 @@ public class Graph<T> {
         visited.add(v); // запоминаем вершину которую посетили
 
         for (Vertex<T> vertex : v.getAdjacent()) {
-            if (!visited.contains(vertex)) {
-                return dfsFind(vertex, target, visited);
+            if (!visited.contains(vertex) && dfsFind(vertex, target, visited)) {
+                return true;
             }
         }
 
